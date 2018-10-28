@@ -1,6 +1,5 @@
 # 项目描述
-项目开发规范
-## 优势
+ 为什么需要项目开发规范
 * 高效编码 - 避免了过多的选择造成的『决策时间』浪费；
 * 风格统一 - 最大程度统一了开发团队成员代码书写风格和思路，代码阅读起来如出一辙；
 * 减少错误 - 减小初级工程师的犯错几率。
@@ -63,10 +62,10 @@
     * [后台]()
 * [协作](#)
 * [工具]()
-* [资源]()
-    * [GraphQL]
-    * [Mock.js]
-    * [Selenium]
+* [资源](#资源)
+    * [GraphQL](http://graphql.cn/)
+    * [Mock.js](http://mockjs.com/)
+    * [Selenium](http://www.testclass.net/selenium_python/)
 
 
 ---
@@ -102,16 +101,19 @@
 * Staging - 线上测试环境，对应git的test分支
 * Production - 线上生产环境，对应git的master分支
 
+
 ## 版本控制工具
 
 ### SVN
 
 ### GIT
 
-分支
+三个远程分支
 * 主分支 - master，对应线上生产环境
 * 测试分支 - test，对应线上测试环境
 * 开发分支 - dev，对应开发环境
+每个开发人员一个独立分支，每次完成相关功能后push到dev分支
+每个issue一个分支，解决后push到dev分支
 
 # 前端
 
@@ -141,5 +143,6 @@ Mock.js是一个模拟数据生成器，可帮助前端开发和原型分离后�
 3.当功能改动时可利用编写的mock规则做接口的回归测试。
 
 4.不需要修改既有代码，就可以拦截 Ajax 请求，返回模拟的响应数据。
+> [Easy Mock](https://www.easy-mock.com/) 是一个可视化，并且能快速生成 模拟数据 的持久化服务
 ## [Selenium](http://www.testclass.net/selenium_python/)
 Selenium也是一个用于Web应用程序测试的工具。Selenium测试直接运行在浏览器中，就像真正的用户在操作一样。支持的浏览器包括IE、Mozilla Firefox、Mozilla Suite等。这个工具的主要功能包括：测试与浏览器的兼容性——测试你的应用程序看是否能够很好得工作在不同浏览器和操作系统之上。测试系统功能——创建衰退测试检验软件功能和用户需求。支持自动录制动作和自动生成。Net、Java、Perl等不同语言的测试脚本。Selenium 是ThoughtWorks专门为Web应用程序编写的一个验收测试工具。
