@@ -20,12 +20,12 @@
         * [GIT]()
 * [前端](#前端)
     * [编码规范](#编码规范)
-    * [项目源码目录]()
+    * [应用目录]()
         * [资源目录(assets)]()
         * [接口(api)]()
         * [组件(components)](#)
         * [配置(config)](#config)
-        * [工具函数(libs)]()
+        * [工具函数(utils)]()
         * [混入(mixins)]()
         * [路由(router)](#)
         * [缓存(store)]()
@@ -70,7 +70,10 @@
     * [GraphQL](http://graphql.cn/)
     * [Mock.js](http://mockjs.com/)
     * [Selenium](http://www.testclass.net/selenium_python/)
-
+    * 优秀专栏
+        * [猿论](https://zhuanlan.zhihu.com/c_159682850)
+        * [PHP / Laravel / 全栈](https://zhuanlan.zhihu.com/fsdhub)
+        * [WEB前端知识总结](https://zhuanlan.zhihu.com/p/25334672)
 
 ---
 # 公用规范
