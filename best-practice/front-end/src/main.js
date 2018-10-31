@@ -1,21 +1,10 @@
 import Vue from 'vue'
-import App from './App.vue'
-import axios from 'axios'
+import router from './router'
+import ElementUI from 'element-ui';
+import 'element-ui/lib/theme-chalk/index.css';
+Vue.use(ElementUI)
 
-
-
-Vue.config.productionTip = false;
-console.log(process.env.VUE_APP_ROOT)
-console.log(process.env.VUE_APP_BASE_URL)
-console.log(process.env.VUE_APP_DEBUG)
-console.log(process.env.VUE_APP_MOCK)
-axios.get('/user?ID=12345')
-  .then(function (response) {
-    console.log(response);
-  })
-  .catch(function (error) {
-    console.log(error);
-  });
 new Vue({
-  render: h => h(App)
+  router,
+  template:'<router-view/>'
 }).$mount('#app')

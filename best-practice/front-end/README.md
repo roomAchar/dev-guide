@@ -26,3 +26,7 @@ npm run test
 ```
 npm run lint
 ```
+## 生成本地配置文件
+```
+cp .\.env.bak .\.env
+```
