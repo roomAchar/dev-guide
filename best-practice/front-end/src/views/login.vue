@@ -21,7 +21,7 @@
     </div>
 </template>
 <script>
-    // import { mapActions } from 'vuex'
+    import vuex from '../store'
     export default {
         data() {
             return {
@@ -31,15 +31,17 @@
                 }
             }
         },
+        craeted(){
+            console.log(mapActions)
+        },
         methods: {
-            // ...mapActions([
-            //     'handleLogin',
-            // ]),
             onSubmit() {
-                // this.handleLogin(this.form).then(res => {
+
+                console.log(vuex.mapActions)
+                console.log(this.$store);
+                // this.$store.mapActions.handleLogin(this.form).then(res => {
                 //     if (res.code == 0){
                 //         this.$message.success('登陆成功');
-                //         //window.location.reload('http://www.jzrpsp.com/admin');
                 //         this.$router.push('/')
                 //     } else{
                 //         this.$message.error('登陆失败');

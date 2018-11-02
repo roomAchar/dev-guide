@@ -1,15 +1,15 @@
 import user from './module/user'
 
-let home_router = [
-    {
-        path: '/',name:'home', component:resolve=>require(['../components/HelloWorld'],resolve)
-    }
-].concat(user);
 
 export default [
     {
         path: '/', component:resolve=>require(['../views/home'],resolve),
-        children: home_router
+        children: [
+            {
+                path: '/',name:'home', component:resolve=>require(['../components/HelloWorld'],resolve)
+            },
+            ...user
+        ]
     },
     {
         path: '/login', name:'login',component:resolve=>require(['../views/login'],resolve)
