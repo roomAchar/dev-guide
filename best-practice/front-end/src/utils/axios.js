@@ -2,8 +2,8 @@ import axios from 'axios'
 import config from '../config'
 import {getToken} from "./index"
 import {Message} from 'element-ui'
-
-const baseUrl = config.baseUrl
+import mock_user from '../api/mock/user'
+import mock_sys from '../api/mock/system'
 
 //  //Laravel CSRF
 // let token = document.head.querySelector('meta[name="csrf-token"]');
@@ -14,10 +14,11 @@ const baseUrl = config.baseUrl
 //     console.error('CSRF token not found: https://laravel.com/docs/csrf#csrf-x-csrf-token');
 // }
 
+
 // 在实例已创建后修改默认值
 axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 axios.defaults.headers.common['Accept'] = 'application/json';
-axios.defaults.baseURL = baseUrl;
+axios.defaults.baseURL = config.baseUrl;
 
 
 // 添加请求拦截器
@@ -41,9 +42,9 @@ axios.interceptors.response.use(function (response) {
         422: '参数校验不通过',
         500: '服务器错误，请稍后再试',
     };
-    if (code == 401) {
-        window.Vue.$router.push('/login')
-    }
+    // if (code == 401) {
+    //     window.Vue.$router.push('/login')
+    // }
     Message({
         showClose: true,
         message: list[code],
@@ -52,4 +53,14 @@ axios.interceptors.response.use(function (response) {
     return Promise.reject(error);
 });
 
-export default axios
+// Mock数据白名单
+let mock = {
+    ...mock_user,
+    ...mock_sys
+}
+export default (option)=>{
+    if(option.url in mock){
+        option.url = config.mockUrl + option.url
+    }
+    return axios.request(option);
+}

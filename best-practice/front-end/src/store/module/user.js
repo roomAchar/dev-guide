@@ -25,7 +25,6 @@ export default {
         setAccess(state, access) {
             state.access = access
         }
-
     },
     actions: {
         // 登录
@@ -33,12 +32,12 @@ export default {
             return new Promise((resolve, reject) => {
                 login(from).then(res => {
                     const data = res.data;
-                    if (data.code == 0){
+                    if (data.status == 0){
                         commit('setToken', data.token);
                         setToken(data.token)
                         resolve(data)
                     }else{
-                        reject('code is not 0')
+                        reject('status is not 0')
                     }
                 }).catch(err => {
                     reject(err)
@@ -46,14 +45,16 @@ export default {
             })
         },
         // 退出登录
-        handleLogOut ({ state, commit }) {
+        handleLogOut ({ commit }) {
             return new Promise((resolve) => {
+                logout().then(() => {
                 commit('setToken', false)
                 commit('setAvatar', null)
                 commit('setUserId', null)
                 commit('setAccess', null)
                 commit('setUserName', null)
                 setToken()
+                });
                 resolve()
             })
         },
@@ -64,14 +65,14 @@ export default {
                 if(state.access === null){
                     userInfo().then(res => {
                         const data = res.data
-                        if (data.code == 0){
-                            const user = data.user;
+                        if (data.status == 0){
+                            const user = data.data;
                             commit('setAvatar', user.avatar)
                             commit('setUserName', user.username)
                             commit('setUserId', user.id)
                             commit('setAccess', user.access)
                         }
-                        resolve(data.user.access)
+                        resolve(data.data.access)
                     }).catch(err => {
                         reject(err)
                     })

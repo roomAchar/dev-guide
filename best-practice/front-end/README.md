@@ -1,7 +1,9 @@
 # front-end
 ## 前后端分离实践项目 —— 前端
 vue+element-ui实践
-> 线上地址 [http://www.test.com]()
+> [线上地址]()
+
+> [Mock数据地址](https://www.easy-mock.com/mock/5bdbe2baedc1b37905bfd607/mock/userInfo)
 ### 资源链接
 * [Vue.js风格指南](https://vuejscaff.com/v2/style-guide/index.html)
 * [Mock.js](http://mockjs.com/)

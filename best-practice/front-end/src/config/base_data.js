@@ -44,7 +44,7 @@ const data = {
  * @returns array
  *
  */
-export const getConfigArray = (keyword,key='value',value='text') => {
+const getConfigArray = (keyword,key='value',value='text') => {
     let res = data[keyword];
     if (key == 'key' && value == 'value'){
         return res;
@@ -67,7 +67,7 @@ export const getConfigArray = (keyword,key='value',value='text') => {
  * @param key
  * @returns {*}
  */
-export const getConfigValue = (keyword,key) => {
+const getConfigValue = (keyword,key) => {
     let value;
     for (let obj of data[keyword]) {
         if (obj.key == key){
@@ -83,7 +83,7 @@ export const getConfigValue = (keyword,key) => {
  * @param value
  * @returns {*}
  */
-export const getConfigKey = (keyword,value) => {
+const getConfigKey = (keyword,value) => {
     let key;
     for (let obj of data[keyword]) {
         if (obj.value == value){
@@ -93,3 +93,5 @@ export const getConfigKey = (keyword,value) => {
     }
     return key;
 }
+
+export default {getConfigArray,getConfigValue,getConfigKey}

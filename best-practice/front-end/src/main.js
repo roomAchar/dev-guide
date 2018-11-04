@@ -11,13 +11,17 @@ Vue.use(ElementUI)
 // login({}).then(res=>{
 //   console.log(res);
 // })
-// console.log(process.env.NODE_ENV)
+// console.log(process.env.VUE_APP_ENV)
 // console.log(process.env.VUE_APP_MOCK)
 // console.log(process.env.VUE_APP_DEBUG)
 // console.log(process.env.VUE_APP_MOCK_TYPE)
+// console.log(process.env.VUE_APP_LOCAL_API)
 // console.log(config)
 // console.log(BaseData.getConfigArray('sex'))
-
+// let a = 0;
+// if  (a = 1){
+//   alert(111)
+// }
 new Vue({
   router,
   render: h => h(App)

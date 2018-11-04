@@ -21,7 +21,7 @@
     </div>
 </template>
 <script>
-    import vuex from '../store'
+    import store from '../store'
     export default {
         data() {
             return {
@@ -32,21 +32,15 @@
             }
         },
         craeted(){
-            console.log(mapActions)
         },
         methods: {
             onSubmit() {
-
-                console.log(vuex.mapActions)
-                console.log(this.$store);
-                // this.$store.mapActions.handleLogin(this.form).then(res => {
-                //     if (res.code == 0){
-                //         this.$message.success('登陆成功');
-                //         this.$router.push('/')
-                //     } else{
-                //         this.$message.error('登陆失败');
-                //     }
-                // })
+                store.dispatch('handleLogin',this.form).then(() => {
+                    this.$message.success('登陆成功');
+                    this.$router.push('/')
+                }).catch(()=>{
+                    this.$message.error('登陆失败');
+                })
             },
             handleRegister(){
                 this.$router.push('/register')

@@ -1,15 +1,18 @@
 import VueRouter from 'vue-router'
 import routes from './routers'
 import Vue from 'vue'
-import {Message} from 'element-ui'
+import store from '../store'
+import { Loading } from 'element-ui'
 import { getToken,setToken} from '../utils'
+
 Vue.use(VueRouter);
-console.log(routes);
+
 const router = new VueRouter({
     routes,
     mode: 'hash'
 })
 
+let loadingInstance
 const HOME_PAGE_NAME = 'home'
 const LOGIN_PAGE_NAME = 'login'
 const REGISTER_PAGE_NAME = 'register'
@@ -18,6 +21,9 @@ const REGISTER_PAGE_NAME = 'register'
  * 路由跳转前的操作
  */
 router.beforeEach((to, from, next) => {
+    loadingInstance = Loading.service({
+        text:"页面跳转中..."
+    })
     const is_login = getToken() ? getToken() != 'undefined':false;
     // const is_login = false;
     if (!is_login && to.name !== LOGIN_PAGE_NAME && to.name !== REGISTER_PAGE_NAME) {
@@ -43,7 +49,7 @@ router.beforeEach((to, from, next) => {
             } else{
                 next({ replace: true, name: 'error_401' }) // 无权限，重定向到401页面
             }
-        }).catch(err=>{
+        }).catch(()=>{
             if(getToken() !== 'undefined'){
                 setToken();
             }
@@ -58,13 +64,8 @@ router.beforeEach((to, from, next) => {
 /**
  * 路由跳转后的操作
  */
-router.afterEach(to => {
-    // console.log(to)
-    // Message({
-    //     showClose: true,
-    //     message: '跳转完成',
-    //     type: 'success'
-    // });
+router.afterEach(() => {
+    loadingInstance.close()
 })
 
 export default router
