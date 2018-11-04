@@ -54,6 +54,7 @@
     * [Mock.js](http://mockjs.com/)
     * [Selenium](http://www.testclass.net/selenium_python/)
     * 优秀专栏
+        * [阿里云云栖社区](https://www.jianshu.com/u/12532d36e4da)
         * [猿论](https://zhuanlan.zhihu.com/c_159682850)
         * [PHP / Laravel / 全栈](https://zhuanlan.zhihu.com/fsdhub)
         * [WEB前端知识总结](https://zhuanlan.zhihu.com/p/25334672)
