@@ -12,7 +12,12 @@ const router = new VueRouter({
     mode: 'hash'
 })
 
+// 是否开启路由跳转时的Loading层
+const LOADING = false
+// Loading层单例对象
 let loadingInstance
+
+// 页面常量
 const HOME_PAGE_NAME = 'home'
 const LOGIN_PAGE_NAME = 'login'
 const REGISTER_PAGE_NAME = 'register'
@@ -21,9 +26,11 @@ const REGISTER_PAGE_NAME = 'register'
  * 路由跳转前的操作
  */
 router.beforeEach((to, from, next) => {
-    loadingInstance = Loading.service({
-        text:"页面跳转中..."
-    })
+    if(LOADING){
+        loadingInstance = Loading.service({
+            text:"页面跳转中..."
+        })
+    }
     const is_login = getToken() ? getToken() != 'undefined':false;
     // const is_login = false;
     if (!is_login && to.name !== LOGIN_PAGE_NAME && to.name !== REGISTER_PAGE_NAME) {
@@ -65,7 +72,9 @@ router.beforeEach((to, from, next) => {
  * 路由跳转后的操作
  */
 router.afterEach(() => {
-    loadingInstance.close()
+    if(LOADING){
+        loadingInstance.close()
+    }
 })
 
 export default router

@@ -1,3 +1,4 @@
 .DS_Store
 .vscode
+.idea
 best-practice/front-end/package-lock.json

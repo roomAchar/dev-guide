@@ -1,7 +1,7 @@
 import axios from 'axios'
 import config from '../config'
 import {getToken} from "./index"
-import {Message} from 'element-ui'
+import {Message,Loading} from 'element-ui'
 import mock_user from '../api/mock/user'
 import mock_sys from '../api/mock/system'
 
@@ -14,7 +14,6 @@ import mock_sys from '../api/mock/system'
 //     console.error('CSRF token not found: https://laravel.com/docs/csrf#csrf-x-csrf-token');
 // }
 
-
 // 在实例已创建后修改默认值
 axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 axios.defaults.headers.common['Accept'] = 'application/json';
@@ -25,6 +24,11 @@ axios.defaults.baseURL = config.baseUrl;
 axios.interceptors.request.use(function (config) {
     // 添加Authorization
     config.headers['Authorization'] = 'Bearer ' + getToken();
+    if(config.loading !== false){
+        Loading.service({
+            text:config.loading
+        })
+    }
     return config;
 }, function (error) {
     return Promise.reject(error);
@@ -33,8 +37,12 @@ axios.interceptors.request.use(function (config) {
 
 // 添加响应拦截器
 axios.interceptors.response.use(function (response) {
+    if(config.loading !== false){
+        Loading.service().close()
+    }
     return response;
 }, function (error) {
+    console.log(error)
     let code = error.response.status;
     let list = {
         404: '请求地址不存在',
@@ -58,9 +66,10 @@ let mock = {
     ...mock_user,
     ...mock_sys
 }
-export default (option)=>{
+export default (option,loading = false)=>{
     if(option.url in mock){
         option.url = config.mockUrl + option.url
     }
+    option.loading = loading
     return axios.request(option);
 }

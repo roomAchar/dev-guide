@@ -7,9 +7,11 @@
 <script>
 export default {
   name: 'HelloWorld',
-  props: {
-    msg: String
-  }
+  data() {
+      return {
+        msg:"Dev-Guide Home"
+      }
+    }
 }
 </script>
 

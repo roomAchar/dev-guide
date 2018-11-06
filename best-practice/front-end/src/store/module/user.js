@@ -48,14 +48,16 @@ export default {
         handleLogOut ({ commit }) {
             return new Promise((resolve) => {
                 logout().then(() => {
-                commit('setToken', false)
-                commit('setAvatar', null)
-                commit('setUserId', null)
-                commit('setAccess', null)
-                commit('setUserName', null)
-                setToken()
+                    commit('setToken', false)
+                    commit('setAvatar', null)
+                    commit('setUserId', null)
+                    commit('setAccess', null)
+                    commit('setUserName', null)
+                    setToken()
+                    resolve()
+                }).catch(()=>{
+                    
                 });
-                resolve()
             })
         },
 
