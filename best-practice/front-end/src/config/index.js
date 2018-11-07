@@ -1,3 +1,6 @@
+/**
+ * 基础配置信息
+ */
 const Conf = {
     baseUrl: {
         local: process.env.VUE_APP_LOCAL_API,
@@ -10,7 +13,10 @@ const Conf = {
     },
 }
 
-
+/**
+ * 默认暴露配置属性
+ * 全局常用配置
+ */
 export default {
     // token在Cookie中存储的天数，默认1天
     cookieExpires: 1,
@@ -23,16 +29,9 @@ export default {
 }
 
 
+/**
+ * 暴露其他配置信息
+ */
 import base_data from './base_data'
 export const BaseData = base_data;
 
-
-
-let progress = {
-    progress:false,
-    percentage:0
-}
-export const Progress = progress;
-export const setProgress = (data) => {
-    progress = data;
-}

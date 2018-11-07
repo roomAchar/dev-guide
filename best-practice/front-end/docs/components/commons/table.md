@@ -45,8 +45,8 @@
 | 名称 | 说明 | 默认值 |
 | ------------ | --------------- | --------------- |
 | search | 表格组件搜索项 | {} |
-| tools_id |   | null |
-| select_ids | 表格开启展开功能后的展开功能组件 | null |
+| tools_id | 通常用于工具栏操作时记录选中行ID | null |
+| select_ids | 存储复选框选中数据的ID | null |
 
 函数说明
 
@@ -71,7 +71,6 @@ mounted(){
 
 ### Columns配置
 ```javascript
- //...
  columns: [
     {
         prop: 'id',         // [必填] 渲染接口字段，与数据库字段一致！         

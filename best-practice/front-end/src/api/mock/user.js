@@ -3,4 +3,5 @@ export default {
     'logout': true,
     'userInfo':true,
     'menu': true,
+    'user':true
 }

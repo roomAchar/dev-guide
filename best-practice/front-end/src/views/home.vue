@@ -1,7 +1,7 @@
 <template>
     <el-container style="height: 100%;">
         <el-header>
-            <div class="logo">Dev-guide</div>
+            <div class="logo">Dev-Guide</div>
             <div class="userInfo">
                 <div class="avator">
                     <img :src="user.avatar" alt="">
@@ -20,7 +20,7 @@
         </el-header>
         <el-container>
             <!--左侧导航-->
-            <el-aside width="220px">
+            <el-aside width="200px">
                 <el-menu :router="true">
                     <template v-for="menu in menus">
                         <component :index="menu.id.toString()" :key="menu.id" :route="menu.url" v-bind:is="menu.children.length>0 ? 'el-submenu':'el-menu-item'">
@@ -49,6 +49,7 @@
                             <el-breadcrumb-item :key="index">{{item}}</el-breadcrumb-item>
                         </template> 
                     </el-breadcrumb>
+                    <i class="el-icon-refresh">刷新</i>
                 </div>
                 <router-view/>
             </el-main>
@@ -65,9 +66,6 @@
                 menus: null,
                 user: this.$store.state.user
             }
-        },
-        beforeCreate() {
-            
         },
         created(){
             this.handleGetMenu().then((data)=>{
@@ -116,7 +114,6 @@
                 'handleGetMenu'
             ]),
             handleCommand(command){
-
                 // 退出登录
                 if(command == 'logout'){
                     this.handleLogOut().then(()=>{
@@ -133,22 +130,15 @@
 
 <style scoped>
     .el-header {
-        background-color: #B3C0D1;
+        background-color: #515a6e;
         color: #333;
         line-height: 60px;
     }
     .logo{
         width: 150px;
         float: left;
-        color: #374c78;
+        color: #fff;
         font-size: 20px;
-    }
-    .logo span{
-        font-size: 24px;
-        color: #f56c6c;
-    }
-    .logo font{
-        font-size: 16px;
     }
     .userInfo{
         float: right;
@@ -164,9 +154,23 @@
         width: 60px;
         border-radius: 30px;
     }
+    .el-icon-refresh{
+        color: #409EFF;
+        font-size: 14px;
+        float: left;
+        padding-left: 4px;
+        cursor: pointer;
+    }
+    .el-breadcrumb{
+        float: left;
+    }
 
+    .el-dropdown-link{
+        color: #fff;
+        cursor: pointer;
+    }
     .el-aside {
-        background-color: #D3DCE6;
+        background-color: #fff;
         color: #333;
     }
 

@@ -1,3 +1,7 @@
+/**
+ * 配置数据
+ * @type {{sex: *[], user_type: *[], user_state: *[], auth_type: *[], role_state: *[]}}
+ */
 const data = {
     /**
      * @description 性别
@@ -44,7 +48,7 @@ const data = {
  * @returns array
  *
  */
-const getConfigArray = (keyword,key='value',value='text') => {
+const getArray = (keyword,key='value',value='text') => {
     let res = data[keyword];
     if (key == 'key' && value == 'value'){
         return res;
@@ -61,13 +65,12 @@ const getConfigArray = (keyword,key='value',value='text') => {
 }
 
 /**
-
  * 通过key获取value
  * @param keyword
  * @param key
  * @returns {*}
  */
-const getConfigValue = (keyword,key) => {
+const getValue = (keyword,key) => {
     let value;
     for (let obj of data[keyword]) {
         if (obj.key == key){
@@ -83,7 +86,7 @@ const getConfigValue = (keyword,key) => {
  * @param value
  * @returns {*}
  */
-const getConfigKey = (keyword,value) => {
+const getKey = (keyword,value) => {
     let key;
     for (let obj of data[keyword]) {
         if (obj.value == value){
@@ -94,4 +97,4 @@ const getConfigKey = (keyword,value) => {
     return key;
 }
 
-export default {getConfigArray,getConfigValue,getConfigKey}
+export default {getArray,getValue,getKey}

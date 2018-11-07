@@ -1,5 +1,5 @@
 import user from './module/user'
-
+import demo from './module/demo'
 
 export default [
     {
@@ -8,7 +8,11 @@ export default [
             {
                 path: '/',name:'home', component:resolve=>require(['../components/HelloWorld'],resolve)
             },
-            ...user
+            {
+                path: '/no_auth',name:'no_auth', component:resolve=>require(['../components/test_auth'],resolve)
+            },
+            ...user,
+            ...demo
         ]
     },
     {
