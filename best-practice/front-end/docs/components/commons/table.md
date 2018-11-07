@@ -27,7 +27,7 @@
 
 | 事件名 | 说明  | 参数 |
 | ------------ | --------------- | ----- |
-| tools | 用户点击 | type,index,row |
+| tools | 用户点击 | event,index,row |
 | children | 获取当前行的子集 | row |
 
 ### Components 依赖子组件
@@ -44,29 +44,29 @@
 
 | 名称 | 说明 | 默认值 |
 | ------------ | --------------- | --------------- |
-| search | 表格组件搜索项 |
-| tools_id |   |
-| select_ids | 表格开启展开功能后的展开功能组件 |
+| search | 表格组件搜索项 | {} |
+| tools_id |   | null |
+| select_ids | 表格开启展开功能后的展开功能组件 | null |
 
 函数说明
 
 | 名称 | 说明 | 参数说明 |
 | ------------ | --------------- | --------------- |
 | ```handleSearch()``` | 列表页点击搜索 |
-| ```handleGetSelection(field = null)``` | 获取复选框选中行数据 |
+| ```handleGetSelection(field = null)``` | 获取复选框选中行数据 | 可选参数，值为要获取列的字段名 如:id |
 | ```handleSetFilter()``` | 设置表格组件筛选项 |
 | ```handleGetFilter()``` | 获取表格组件筛选项 |
 | ```handleRenderTable()``` | 重载表格组件 |
 | ```handleOpenLoading()``` | 开启表格组件Loading层 |
 | ```handleCloseLoading()``` | 关闭表格组件Loading层 |
-| ```handleDeleteRow(index)``` | 删除表格组件某行数据 |
+| ```handleDeleteRow(index)``` | 删除表格组件某行数据 | 要删除行的行号，只是从列表上移除数据，删除数据功能需要自己实现 |
 
 
 > 父组件中默认初始化Table筛选条件加在mounted周期中
 ``` 
 mounted(){
     this.handleSetFilter('where',{type:'1'});
-},
+}
 ```
 
 ### Columns配置
@@ -85,7 +85,7 @@ mounted(){
             multiple: true,                     // 是否可多选，默认为true
             data:BaseData.getArray('sex')       // 下拉数据数组,filter存在则必选，getConfigArray('sex') 函数参考 config/sys_config.js
         },
-        tools: {            // 操作工具栏 必须监听tools事件 handleTools(type,index,row) type参数为点击按钮的键值
+        tools: {            // 操作工具栏 必须监听tools事件 handleTools(event,index,row) event 参数为点击按钮的键值
             show: {
                 type: 'primary',        // 按钮类型
                 icon: 'el-icon-view',   // 按钮图标
