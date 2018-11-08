@@ -73,7 +73,7 @@
                         convert: true,
                         label: '性别',
                         filter:{
-                            data:BaseData.getArray('sex')
+                            data:BaseData.get('sex')
                         }
                     },
                     {
@@ -81,14 +81,14 @@
                         convert: true,
                         label: '用户类型',
                         filter:{
-                            data:BaseData.getArray('user_type')
+                            data:BaseData.get('user_type')
                         }
                     },
                     {
 
                         label: '用户状态',
                         filter:{
-                            data:BaseData.getArray('user_state')
+                            data:BaseData.get('user_state')
                         },
                         render:{
                             props: {

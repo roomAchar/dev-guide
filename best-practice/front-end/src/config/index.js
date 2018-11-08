@@ -26,12 +26,15 @@ export default {
 
     // Mock URL前缀
     mockUrl: Conf.mockUrl[process.env.VUE_APP_MOCK_TYPE],
+
 }
+
+
 
 
 /**
  * 暴露其他配置信息
  */
-import base_data from './base_data'
-export const BaseData = base_data;
+import _BaseData from './base_data'
+export const BaseData = _BaseData
 

@@ -1,5 +1,5 @@
 import { login, logout, userInfo } from '../../api/user'
-import { setToken,getToken} from '../../utils';
+import { setToken,getToken} from '../../utils/common';
 
 export default {
     state: {

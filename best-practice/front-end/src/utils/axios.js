@@ -1,7 +1,7 @@
 import axios from 'axios'
 import mock from '../api/mock'
 import config from '../config'
-import { getToken } from "./index"
+import { getToken } from "./common"
 import {Message,Loading} from 'element-ui'
 
 
@@ -16,9 +16,9 @@ axios.interceptors.request.use(
         // 添加Authorization
         config.headers['Authorization'] = 'Bearer ' + getToken();
         // 加载loading层
-        if(config.loading !== false){
+        if(config['loading'] !== false){
             Loading.service({
-                text:config.loading
+                text:config['loading']
             })
         }
         return config;
@@ -32,7 +32,7 @@ axios.interceptors.request.use(
 // 添加响应拦截器
 axios.interceptors.response.use(
     function (response) {
-        if(response.config.loading !== false){
+        if(response.config['loading'] !== false){
             Loading.service({}).close()
         }
         return response;
@@ -68,3 +68,4 @@ export default (option,loading = false)=>{
     option.loading = loading
     return axios.request(option);
 }
+

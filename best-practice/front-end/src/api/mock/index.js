@@ -1,7 +1,7 @@
-import mock_user from "./user";
-import mock_sys from "./system";
+import user from "./user";
+import system from "./system";
 
 export default {
-    ...mock_user,
-    ...mock_sys
+    ...user,
+    ...system
 }

@@ -2,7 +2,7 @@
  * 配置数据
  * @type {{sex: *[], user_type: *[], user_state: *[], auth_type: *[], role_state: *[]}}
  */
-const data = {
+const config = {
     /**
      * @description 性别
      */
@@ -48,8 +48,8 @@ const data = {
  * @returns array
  *
  */
-const getArray = (keyword,key='value',value='text') => {
-    let res = data[keyword];
+const get = (keyword,key='value',value='text') => {
+    let res = config[keyword];
     if (key == 'key' && value == 'value'){
         return res;
     }
@@ -70,9 +70,9 @@ const getArray = (keyword,key='value',value='text') => {
  * @param key
  * @returns {*}
  */
-const getValue = (keyword,key) => {
+const val = (keyword,key) => {
     let value;
-    for (let obj of data[keyword]) {
+    for (let obj of config[keyword]) {
         if (obj.key == key){
             value = obj.value;
             break;
@@ -86,9 +86,9 @@ const getValue = (keyword,key) => {
  * @param value
  * @returns {*}
  */
-const getKey = (keyword,value) => {
+const key = (keyword,value) => {
     let key;
-    for (let obj of data[keyword]) {
+    for (let obj of config[keyword]) {
         if (obj.value == value){
             key = obj.key;
             break;
@@ -97,4 +97,4 @@ const getKey = (keyword,value) => {
     return key;
 }
 
-export default {getArray,getValue,getKey}
+export default {get,val,key};

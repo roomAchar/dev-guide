@@ -20,7 +20,6 @@
 ```bash
 git clone git@192.168.0.1:dev-guide-front-end.git
 ```
-
 > 生成本地配置文件,需要自行修改 .env 文件
 ```
 cp .env.bak .env

@@ -3,12 +3,6 @@ import { menu } from '../../api'
 export default {
     state: {
         menus: null
-
-    },
-    mutations: {
-        setMenu(state, menus) {
-            state.menus = menus
-        },
     },
     actions: {
         // 获取首页菜单，保存到store
@@ -27,6 +21,5 @@ export default {
                 }
             })
         },
-
     }
 }

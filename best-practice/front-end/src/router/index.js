@@ -2,8 +2,8 @@ import VueRouter from 'vue-router'
 import routes from './routers'
 import Vue from 'vue'
 import store from '../store'
-import { Loading } from 'element-ui'
-import { getToken,setToken} from '../utils'
+import { Loading,Message } from 'element-ui'
+import { getToken,setToken} from '../utils/common'
 
 Vue.use(VueRouter);
 
@@ -14,6 +14,7 @@ const router = new VueRouter({
 
 // 是否开启路由跳转时的Loading层
 const LOADING = false
+
 // Loading层单例对象
 let loadingInstance
 
@@ -32,7 +33,7 @@ router.beforeEach((to, from, next) => {
         })
     }
     const is_login = getToken() ? getToken() != 'undefined':false;
-    // const is_login = false;
+
     if (!is_login && to.name !== LOGIN_PAGE_NAME && to.name !== REGISTER_PAGE_NAME) {
         // 未登录且要跳转的页面不是登录页和注册页
         next({
@@ -57,6 +58,7 @@ router.beforeEach((to, from, next) => {
                 next({ replace: true, name: 'error_401' }) // 无权限，重定向到401页面
             }
         }).catch(()=>{
+            Message.error('获取用户信息失败，请重新登录')
             if(getToken() !== 'undefined'){
                 setToken();
             }
