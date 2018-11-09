@@ -14,38 +14,50 @@
     * [环境说明](#环境说明)
     * [配置信息与环境变量](#配置信息与环境变量)
     * [版本控制工具](#版本控制工具)
-        * [SVN]()
-        * [GIT]()
+        * [SVN](#SVN)
+        * [GIT](#GIT)
+            * [Git - 简明指南]()
+            * [Git的奇技淫巧](https://github.com/521xueweihan/git-tips)
     * [数据库说明](#数据库说明)
+        * [PD设计指南]()
 * [前端](#前端)
     * [编码规范](#编码规范)
     * [应用目录](#应用目录)
     * [mock数据](#mock数据)
     * [测试](#测试)
         * [e2e]()
-        * [unit]()
+        * [unit](https://vue-test-utils.vuejs.org/zh/)
     * [设计模式](#设计模式)
 * [后台](#特性)
     * [编码规范]()
-        * [PSR-*](https://github.com/PizzaLiu/PHP-FIG)
+        * [PSR-1/PSR-2](https://github.com/PizzaLiu/PHP-FIG)
     * [设计理念]()
-        * [MVC]()
+        * [基础架构]()
+            * Middleware
+            * Model *
+                * 关联
+                * 查询作用域
+                * 数据映射 访问器 修改器
+                * 事件
+            * Service
+            * Controller
         * [Restful](http://www.ruanyifeng.com/blog/2014/05/restful_api.html)
         * [GraphQL](http://graphql.cn/)
-    * [鉴权](#)
+        
+    * [鉴权与用户认证](#)
         * [OAuth2](http://www.ruanyifeng.com/blog/2014/05/oauth_2_0.html)
         * [JWT](http://www.ruanyifeng.com/blog/2018/07/json_web_token-tutorial.html)
         * [Token]()
     * [单元测试]()
-    * [功能测试]()
-    * [日志系统]()
-
+        * [phpunit]()
+        * [MSTest]()
+    * [日志系统(PSR-3)](https://github.com/PizzaLiu/PHP-FIG)
 * [测试](#特性)
 * [开发环境部署]()
     * [前端]()
     * [后台]()
 * [协作](#)
-    * [腾讯文档]
+    * [腾讯文档]()
 * [工具](#)
     * [POSTMAN](#)
     * [RDM](#)
@@ -181,7 +193,7 @@ config.cdn_domain
 每个issue一个分支，解决后push到develop分支
 
 ## 数据库说明
-* 
+
 
 # 前端
 
