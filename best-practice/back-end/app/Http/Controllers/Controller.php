@@ -23,4 +23,17 @@ class Controller extends BaseController
     ];
 
 
+    protected function returnMsg($status,$msg='',$other=[]){
+        if (in_array($status,$this->StatusCode)){
+            $return = [
+                'msg'       => $msg,
+                'status'    => $this->StatusCode[$status]
+            ];
+            $return = array_merge($return,$other);
+            return response()->json($return);
+        }else{
+            throw new \Exception('返回状态值未定义');
+        }
+    }
+
 }

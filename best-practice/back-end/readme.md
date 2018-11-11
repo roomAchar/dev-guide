@@ -41,7 +41,6 @@ cp .env.example .env
 php artisan key:generate
 ```
 
-
 #### 6. 生成数据表及生成测试数据
 在网站根目录下运行以下命令
 ```bash
@@ -56,7 +55,6 @@ password:123456
 #### 7. 创建生成安全访问令牌时所需的加密密钥
 ```bash
 php artisan passport:install
-php artisan passport:keys
 ```
 
 ## 扩展包说明

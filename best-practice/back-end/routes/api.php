@@ -19,10 +19,17 @@ Route::group(['namespace'=>'Auth'],function () {
     Route::group(['middleware' => 'auth:api'], function() {
         Route::get('userInfo', 'UserController@getUserInfo');
         Route::get('logout', 'LoginController@logout');
+        Route::get('menu', 'UserController@getUserMenu');
     });
 });
 
 
+Route::group(['namespace'=>'Admin','middleware' => 'auth:api'],function () {
+    Route::get('menu/list/{id}', 'MenuController@getData');
+
+
+    Route::get('user/list', 'UserController@getList');
+});
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();

@@ -27,4 +27,41 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    protected $appends = ['sex_text','state_text'];
+
+    /**
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function hasRole()
+    {
+        return $this->hasMany(Role::class);
+    }
+
+
+    protected $maps = [
+        'sex'   => [
+            '0' =>  '未填写',
+            '1' =>  '男',
+            '2' =>  '女'
+        ],
+        'type'  => [
+            '0' =>  '管理员',
+            '1' =>  '普通用户'
+        ],
+        'state' => [
+            '0' =>  '',
+            '1' =>  '',
+        ]
+    ];
+
+    public function getSexTextAttribute(){
+        $field = 'sex';
+        return $this->maps[$field][$this->attributes[$field]];
+    }
+    public function getStateTextAttribute(){
+        $field = 'state';
+        return $this->maps[$field][$this->attributes[$field]];
+    }
 }

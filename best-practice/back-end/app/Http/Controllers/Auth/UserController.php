@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Http\Services\AuthServices;
+use App\Models\Menu;
 use Illuminate\Support\Facades\Auth;
 use App\Crawler\Download\Html\GetHtml;
 
@@ -17,29 +19,18 @@ class UserController extends Controller
     public function getUserInfo()
     {
         $user = Auth::user()->toArray();
-        //dd($user);
         if ($user){
-            $user['access'] = $this->getAccess();
-            return response()->json(['code'=>$this->StatusCode['success'],'user'=>$user]);
+            $user['access'] = AuthServices::getUserRoute($user['id']);
+            return $this->returnMsg('success','',['data'=>$user]);
         }else{
-            return response()->json(['code'=>$this->StatusCode['error'],'msg'=>'获取用户信息失败']);
+            return $this->returnMsg('error','获取用户信息失败');
         }
     }
 
-    public function getAccess(){
-//        $key = 'role:'.$roles->id;
-//        $roles = \App\Models\UserAndRole::where('user_id',$user['id'])->pluck('role_id');
-//        $auth_id = \App\Models\RoleAndAuth::whereIn('role_id',$roles)->select('auth_id')->distinct()->pluck('auth_id')->toArray();
-//        $auth = \App\Models\Auth::whereIn('id',$auth_id)->get()->toArray();
-        $access = [
-            '/home',
-            '/menu',
-            '/config',
-            '/user',
-            '/auth',
-            '/role',
-            '/crawler_rules',
-        ];
-        return $access;
+    public function getUserMenu()
+    {
+        $menu = AuthServices::getUserMenu(Auth::id());
+        return $this->returnMsg('success','',['data'=>$menu]);
     }
+
 }

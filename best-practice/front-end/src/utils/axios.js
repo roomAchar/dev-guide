@@ -2,7 +2,7 @@ import axios from 'axios'
 import mock from '../api/mock'
 import config from '../config'
 import { getToken } from "./common"
-import {Message,Loading} from 'element-ui'
+import { Message,Loading} from 'element-ui'
 
 
 // 在实例已创建后修改默认值
@@ -38,6 +38,7 @@ axios.interceptors.response.use(
         return response;
     },
     function (error) {
+        console.log(error)
         let code = error.response.status;
         let list = {
             404: '请求地址不存在',
@@ -45,11 +46,8 @@ axios.interceptors.response.use(
             422: '参数校验不通过',
             500: '服务器错误，请稍后再试',
         };
-        Message({
-            showClose: true,
-            message: list[code],
-            type: 'error'
-        });
+        Message.error(list[code])
+       
         return Promise.reject(error);
     }
 );

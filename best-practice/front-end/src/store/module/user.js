@@ -66,15 +66,18 @@ export default {
             return new Promise((resolve, reject) => {
                 if(state.access === null){
                     userInfo().then(res => {
+                        console.log(res.data)
                         const data = res.data
                         if (data.status == 0){
                             const user = data.data;
                             commit('setAvatar', user.avatar)
-                            commit('setUserName', user.username)
+                            commit('setUserName', user.name)
                             commit('setUserId', user.id)
                             commit('setAccess', user.access)
+                            resolve(data.data.access)
+                        }else{
+                            reject(data.status)
                         }
-                        resolve(data.data.access)
                     }).catch(err => {
                         reject(err)
                     })

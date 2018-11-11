@@ -113,7 +113,7 @@ export default {
          * @param row
          * @param children
          */
-        handleSetChild(row,children){
+        handleSetChildren(row,children){
             this.$refs.table.setChildren(row,children);
         },
         /**

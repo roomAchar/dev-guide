@@ -43,7 +43,7 @@
         data() {
             return {
                 page_name: '用户',
-                url: 'user',
+                url: 'user/list',
                 addFormVisible: false,
                 editFormVisible: false,
                 columns: [
@@ -54,7 +54,7 @@
                         width: '80'
                     },
                     {
-                        prop: 'username',
+                        prop: 'name',
                         label: '用户名',
                         search: true,
                     },

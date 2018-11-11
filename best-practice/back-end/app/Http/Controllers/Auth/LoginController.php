@@ -18,16 +18,9 @@ class LoginController extends Controller
         );
         if (Auth::attempt(['email' => $data['email'], 'password' => $data['password']])){
             $token =  Auth::user()->createToken(config('auth.token_name'))->accessToken;
-            return response()->json([
-                'msg'    =>  '登陆成功',
-                'code'   =>  $this->StatusCode['success'],
-                'token'  =>  $token,
-            ]);
+            return $this->returnMsg('success','登录成功',['token'=>$token]);
         }
-        return response()->json([
-            'msg'    =>  '登陆失败，账号或密码不匹配',
-            'code'   =>  $this->StatusCode['error']
-        ]);
+        return $this->returnMsg('error','登陆失败，账号或密码不匹配');
     }
 
     public function logout(Request $request){

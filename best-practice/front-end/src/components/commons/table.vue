@@ -85,7 +85,6 @@
         },
         components:{ Tools,Fold },
         created:function(){
-            console.log('table')
             // 生成动态组件
             for (var x in this.columns) {
                 if ('render' in this.columns[x]){
