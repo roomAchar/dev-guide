@@ -2,21 +2,19 @@ import VueRouter from 'vue-router'
 import routes from './routers'
 import Vue from 'vue'
 import store from '../store'
-import { Loading,Message } from 'element-ui'
+import { Message } from 'element-ui'
 import { getToken,setToken} from '../utils/common'
-
+import NProgress from 'nprogress' // progress bar
+import 'nprogress/nprogress.css'// progress bar style
 Vue.use(VueRouter);
 
 const router = new VueRouter({
     routes,
-    mode: 'hash'
+    mode: 'hash',
+    scrollBehavior: () => ({ y: 0 }),
 })
 
-// 是否开启路由跳转时的Loading层
-const LOADING = false
-
-// Loading层单例对象
-let loadingInstance
+NProgress.configure({ showSpinner: false })
 
 // 页面常量
 const HOME_PAGE_NAME = 'home'
@@ -27,11 +25,7 @@ const REGISTER_PAGE_NAME = 'register'
  * 路由跳转前的操作
  */
 router.beforeEach((to, from, next) => {
-    if(LOADING){
-        loadingInstance = Loading.service({
-            text:"页面跳转中..."
-        })
-    }
+    NProgress.start();
     const is_login = getToken() ? getToken() != 'undefined':false;
 
     if (!is_login && to.name !== LOGIN_PAGE_NAME && to.name !== REGISTER_PAGE_NAME) {
@@ -74,9 +68,7 @@ router.beforeEach((to, from, next) => {
  * 路由跳转后的操作
  */
 router.afterEach(() => {
-    if(LOADING){
-        loadingInstance.close()
-    }
+    NProgress.done();
 })
 
 export default router
