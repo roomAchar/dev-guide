@@ -19,7 +19,7 @@
             * [Git - 简明指南]()
             * [Git的奇技淫巧](https://github.com/521xueweihan/git-tips)
     * [数据库说明](#数据库说明)
-        * [PD设计指南]()
+        * [PD设计]()
 * [前端](#前端)
     * [编码规范](#编码规范)
     * [应用目录](#应用目录)
@@ -34,6 +34,7 @@
     * [设计理念]()
         * [基础架构]()
             * Middleware
+                * 请求访问控制中间件
                 * cors跨域资源共享
                 * 身份验证
                 * 日志中间件
@@ -97,7 +98,7 @@
 * 原文中的双引号（" "）请代换成中文的引号（『』符号怎么打出来见 这里）。
 * 所有的「***加粗***」和「[链接]()」都需要在左右保持一个空格。
 
-### 2. 行文规范
+### 2. README文档
 readme.md 文档 应该 包含以下内容：
 * 「项目概述」- 介绍说明项目的一些情况，类似于简单的产品说明，简单的功能描述，项目相关链接等，500 字以内；
 * 「运行环境」- 运行环境说明，系统要求等信息；
@@ -142,32 +143,29 @@ readme.md 文档 应该 包含以下内容：
 假如我们有个『API接口地址』的变量，有以下几种方法实现：
 
 1. 硬代码，直接写死。- ❌ 可维护性低
-2. 写死在 config/common.js 文件中。 - ❌ 无法区分环境进行配置
-3. 根据 .env 中的环境信息配合 config/common.js 动态读取。- ✅ 最佳实践
-
-第一种方法是最古老的方法，代码可维护性极低，一旦域名变更就只能全局替换。第二种方法无法区分环境，例如本地使用开发环境域名测试，线上才是正式的 CDN 域名。第三种方法既支持环境变量，又具备极高的灵活性，假如遇到同样的 CDN 多域名随机问题，你只需要写一个辅助方法，然后在 config/common.js 中调用即可，不需要动到任何一行业务逻辑代码。
+2. 写死在 config/index.js 文件中。 - ❌ 无法区分环境进行配置
+3. 根据 .env 中的环境信息配合 config/index.js 动态读取。- ✅ 最佳实践
 
 代码示例
 .env 文件中设置：
 ```conf
-VUE_APP_ENV = local
-VUE_APP_LOCAL_API = http://localhost:8080
+VUE_APP_ENV = development
+VUE_APP_DEV_API = http://localhost:8080
 ```
-config/app.php 文件中设置：
+config/index.js 文件中设置：
 ```javascript
 const config = {
-    cdn_domain:{
-        local: process.env.VUE_APP_LOCAL_API,
-        development: 'http://test.com',
+    api_url:{
+        development: process.env.VUE_APP_LOCAL_API,
         production: 'http://demo.com'
     }
 }
 export default {
-    cdn_domain:config.cdn_domain[process.env.VUE_APP_ENV],
+    api_url:config.api_url[process.env.VUE_APP_ENV],
     //  ....
 }
 // 获取配置
-config.cdn_domain
+config.api_url
 ```
 在此统一规定：所有程序配置信息 必须 通过 config 来读取，所有的 .env 配置信息 必须 通过 config 来读取，绝不 在配置文件以外的范围使用 env。
 
