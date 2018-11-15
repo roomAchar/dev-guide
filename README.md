@@ -17,7 +17,7 @@
         * [SVN](#SVN)
         * [GIT](#GIT)
             * [Git - 简明指南]()
-            * [Git的奇技淫巧](https://github.com/521xueweihan/git-tips)
+            * [Git - 常用操作](https://github.com/521xueweihan/git-tips)
     * [数据库说明](#数据库说明)
         * [PD设计]()
 * [前端](#前端)
@@ -71,6 +71,8 @@
 * [资源](#资源)
     * [GraphQL](http://graphql.cn/)
     * [Mock.js](http://mockjs.com/)
+    * [Easy Mock](https://www.easy-mock.com/)
+    * [Swagger](https://swagger.io/)
     * [Selenium](http://www.testclass.net/selenium_python/)
     * 优秀专栏
         * [阿里云云栖社区](https://www.jianshu.com/u/12532d36e4da)
@@ -109,11 +111,13 @@ readme.md 文档 应该 包含以下内容：
 * 「自定义 Artisan 命令列表」(PHP)- 以表格形式罗列出所有自定义的命令，说明用途，指出调用场景；
 * 「队列列表」(后台)- 以表格形式罗列出项目所有队列接口，说明用途，指出调用场景。
 
-### 3.公共组件文档(前端)
-*  [DEMO](https://github.com/eiixy/dev-guide/blob/master/best-practice/front-end/docs/components/commons/table.md)
 
 ### 3.目录架构文档(前端)
 *  [DEMO](https://github.com/eiixy/dev-guide/blob/master/best-practice/front-end/docs/catalog.md)
+
+### 4.公共组件文档(前端)
+*  [DEMO](https://github.com/eiixy/dev-guide/blob/master/best-practice/front-end/docs/components/commons/table.md)
+
 
 
 
@@ -219,6 +223,7 @@ config.api_url
 2.前端需要什么数据后端只会返回需要用到的数据字段，因为控制数据的是前端，而不是服务器。这样前端可避免跟后台去要接口
 
 3.GraphQL查询不仅能够获得资源的属性，还能沿着资源间引用进一步查询。还可以把多个资源通过一次请求就获取前端所需的所有数据。
+
 ## [Mock.js](http://mockjs.com/)
 Mock.js是一个模拟数据生成器，可帮助前端开发和原型分离后端进度，并减少一些单调，特别是在编写自动化测试时。
 
@@ -229,6 +234,7 @@ Mock.js是一个模拟数据生成器，可帮助前端开发和原型分离后�
 3.当功能改动时可利用编写的mock规则做接口的回归测试。
 
 4.不需要修改既有代码，就可以拦截 Ajax 请求，返回模拟的响应数据。
+
 > [Easy Mock](https://www.easy-mock.com/) 是一个可视化，并且能快速生成 模拟数据 的持久化服务
 ## [Selenium](http://www.testclass.net/selenium_python/)
 Selenium也是一个用于Web应用程序测试的工具。Selenium测试直接运行在浏览器中，就像真正的用户在操作一样。支持的浏览器包括IE、Mozilla Firefox、Mozilla Suite等。这个工具的主要功能包括：测试与浏览器的兼容性——测试你的应用程序看是否能够很好得工作在不同浏览器和操作系统之上。测试系统功能——创建衰退测试检验软件功能和用户需求。支持自动录制动作和自动生成。Net、Java、Perl等不同语言的测试脚本。Selenium 是ThoughtWorks专门为Web应用程序编写的一个验收测试工具。
