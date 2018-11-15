@@ -77,7 +77,7 @@
         * [猿论](https://zhuanlan.zhihu.com/c_159682850)
         * [PHP / Laravel / 全栈](https://zhuanlan.zhihu.com/fsdhub)
         * [WEB前端知识总结](https://zhuanlan.zhihu.com/p/25334672)
-
+    
 ---
 # 公用规范
 前后端公用规范
@@ -109,8 +109,11 @@ readme.md 文档 应该 包含以下内容：
 * 「自定义 Artisan 命令列表」(PHP)- 以表格形式罗列出所有自定义的命令，说明用途，指出调用场景；
 * 「队列列表」(后台)- 以表格形式罗列出项目所有队列接口，说明用途，指出调用场景。
 
-### 3.自定义基础组件文档(前端)
-*
+### 3.公共组件文档(前端)
+*  [DEMO](https://github.com/eiixy/dev-guide/blob/master/best-practice/front-end/docs/components/commons/table.md)
+
+### 3.目录架构文档(前端)
+*  [DEMO](https://github.com/eiixy/dev-guide/blob/master/best-practice/front-end/docs/catalog.md)
 
 
 
