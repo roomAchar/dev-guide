@@ -2,23 +2,29 @@
 [常用命令](#常用命令)
 ## 教程
 [Git教程](https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000)
+
 [Git-简明指南](https://rogerdudler.github.io/git-guide/index.zh.html)
+
 [Git-常用操作](https://github.com/521xueweihan/git-tips)
 
-* 加入项目开发
-* 分支说明
-* 常用流程
-
+## 目录
+* [加入项目开发](#加入项目开发)
+* [分支说明](#分支说明)
+* [常用流程](#常用流程)
 
 ## 加入项目开发
-> 生成SSH密钥	`ssh-keygen -t rsa -C "youmail@qq.com"`
+1. 生成SSH密钥	`ssh-keygen -t rsa -C "你的邮箱"`
 
-> 测试GIT地址 `git@47.92.228.249:test.git`
+3. 设置全局配置 
 
-1. 克隆代码到本地 `git clone <address> `
-2. 根据readme.md文档部署本地环境
-3. 新建自己的分支 `git checkout -b <name>`
-4. 在自己的分支上展开工作
+```bash
+git config --global user.name "你的名字或昵称"
+git config --global user.email "你的邮箱"
+```
+4. 克隆代码到本地 `git clone <address> `
+5. 根据readme.md文档部署本地环境
+6. 新建自己的分支 `git checkout -b <name>`
+7. 在自己的分支上展开工作
 
 
 ## 分支说明
@@ -56,9 +62,9 @@
 `git status` | 查看当前状态 | 
 `git diff <name>` | 查看文件差异 | name:文件名
 `git reset --hard [commit_id | HEAD^]` | 版本回退 | commit_id:提交版本号  HEAD^：上一个版本
-`git push <name> ` | 推送 
+`git push <origin name> ` | 推送 origin name：远程分支名
 `git pull ` | 拉取 
-`git checkout [-b] <name>` | 切换分支 | -b:切换并创建分支，name:分支名
+`git checkout [-b] <name> <origin>` | 切换分支 | -b:切换并创建分支，name:分支名 origin:关联远程分支名
 `git branch <name>` | 创建分支 | name:要创建的分支名称
 `git stash` | 
 `git stash pop` |
