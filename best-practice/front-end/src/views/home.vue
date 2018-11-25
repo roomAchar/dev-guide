@@ -43,15 +43,28 @@
             <!--主内容区域-->
             <el-main>
                 <div :style="{height:'30px'}">
+                    <el-row>
+                        <el-col :span="24">
+                            <template v-for="(item,key) in routes">
+                                <el-tag :key="key" size="small" :closable="item.closable">{{item.lable}}</el-tag>
+                            </template>
+                            <el-tag size="medium" closable>中等标签</el-tag>
+                            <el-tag size="medium" closable>中等标签</el-tag>
+                        </el-col>
+                    </el-row>
+                   
                     <el-breadcrumb separator="/">
                         <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
                         <template v-for="(item,index) in reversedBreadcrumb">
                             <el-breadcrumb-item :key="index">{{item}}</el-breadcrumb-item>
                         </template> 
                     </el-breadcrumb>
-                    <i class="el-icon-refresh">刷新</i>
+                    <i class="el-icon-refresh" @click="reload = false">刷新1</i>
+                    <i class="el-icon-refresh" @click="reload=true">刷新2</i>
                 </div>
-                <router-view/>
+                <keep-alive>
+                    <router-view v-if="reload" />
+                </keep-alive>
             </el-main>
         </el-container>
     </el-container>
@@ -64,8 +77,16 @@
         name: "home",
         data() {
             return {
+                reload:true,
                 menus: null,
-                user: this.$store.state.user
+                user: this.$store.state.user,
+                routes: [
+                    {
+                        lable:'首页',
+                        route:'home',
+                        closable:false
+                    }
+                ]
             }
         },
         created(){
@@ -178,5 +199,9 @@
     .el-main {
         background-color: #E9EEF3;
         color: #333;
+    }
+
+    .el-tag+.el-tag {
+        margin-left: 10px;
     }
 </style>

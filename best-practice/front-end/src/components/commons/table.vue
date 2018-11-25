@@ -55,6 +55,7 @@
     import Tools from './tools';
     import Fold from './fold';
     import request from '../../utils/axios';
+    const ChildrenField = 'tree_children'
     export default {
         props:{
             url: String,
@@ -192,14 +193,14 @@
                     if(i==0){
                         data = data[path[i]];
                     }else{
-                        data = data['tree_children'][path[i]];
+                        data = data[ChildrenField][path[i]];
                     }
                 }
                 if(row.tree_fold == 'loading'){
                     row.tree_fold = 'open';
                 }
                 this.$set(data,'tree_fold',row.tree_fold);
-                this.$set(data,'tree_children',children)
+                this.$set(data,ChildrenField,children)
             },
         },
         computed: {
@@ -214,7 +215,6 @@
 
     // 递归计算list结构
     function getChildren(data,path,level){
-        const field = 'tree_children';
         let return_data = [];
         for (var x in data){
             data[x]['tree_level'] = level;
@@ -222,10 +222,10 @@
             path.length = level+1;
             data[x]['tree_path'] = path;
             let item = JSON.parse(JSON.stringify(data[x]));
-            delete item[field];
+            delete item[ChildrenField];
             return_data.push(item);
-            if (field in data[x]){
-                let children = getChildren(data[x][field],path,level+1);
+            if (ChildrenField in data[x]){
+                let children = getChildren(data[x][ChildrenField],path,level+1);
                 return_data = return_data.concat(children);
             }
         }

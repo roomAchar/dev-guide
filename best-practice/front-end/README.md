@@ -28,15 +28,38 @@ cp .env.bak .env
 ```
 npm install
 ```
-> 运行项目
+> 运行开发环境
 ```
-npm run serve
+npm run dev
 ```
-> 打包
+> 运行集成测试环境
+```
+npm run sit
+```
+> 打包正式环境
 ```
 npm run build
 ```
-> 运行测试
+> 打包到集成测试环境
 ```
-npm run test
+npm run build:sit
 ```
+
+
+## 集成测试流程
+1. 克隆仓库
+```bash
+git clone git@192.168.0.1:project.git
+```
+2. 切换到预发布分支，pull代码
+```git
+git checkout -b release origin/release
+git pull
+```
+3. 安装依赖
+```bash
+npm install
+```
+4. 运行
+```
+npm run sit

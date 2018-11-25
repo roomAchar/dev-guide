@@ -61,7 +61,7 @@ axios.interceptors.response.use(
  */
 export default (option,loading = false)=>{
     if(option.url in mock){
-        option.url = config.mockUrl + option.url
+        option.url = config.mockUrl + '/' + option.url
     }
     option.loading = loading
     return axios.request(option);

@@ -47,6 +47,7 @@ class AuthServices
             '/home',
             '/demo/list',
             '/demo/list_extend',
+            '/demo/test_keep',
             '/user',
             '/auth',
             '/role',

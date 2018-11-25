@@ -16,7 +16,10 @@ class Cors
     {
 
         // 设置允许访问的域地址
-        $domains = ['http://localhost:8080'];
+        $domains = [
+            'http://127.0.0.1:8080',
+            'http://localhost:8080'
+        ];
 
         if(isset($request->server()['HTTP_ORIGIN'])){
             $origin = $request->server()['HTTP_ORIGIN'];
